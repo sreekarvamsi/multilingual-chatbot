@@ -7,6 +7,7 @@ tokenizer = XLMRobertaTokenizer.from_pretrained('xlm-roberta-base')
 # Load raw data
 df = pd.read_csv('data/multilingual_sample.csv')
 
+
 # Cleaning function
 def clean_text(text):
     if pd.isna(text):
@@ -14,6 +15,7 @@ def clean_text(text):
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)  # Remove URLs
     text = re.sub(r'[^A-Za-z0-9\s.,!?]', '', text)  # Keep alphanumeric and basic punctuation
     return text.strip()
+
 
 # Apply cleaning to all language columns
 for col in ['text', 'text_es', 'text_hi']:
@@ -28,6 +30,7 @@ print("Data cleaned and saved!")
 # Tokenize each language column
 def tokenize_text(text):
     return tokenizer(text, padding=True, truncation=True, max_length=128, return_tensors='pt')
+
 
 # Apply tokenization (store tokenized IDs for later use if needed)
 df['tokens_en'] = df['text'].apply(lambda x: tokenize_text(x)['input_ids'].tolist())
