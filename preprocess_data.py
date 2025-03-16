@@ -24,6 +24,7 @@ df = df[df[['text', 'text_es', 'text_hi']].ne('').any(axis=1)]
 df.to_csv('data/cleaned_multilingual.csv', index=False)
 print("Data cleaned and saved!")
 
+
 # Tokenize each language column
 def tokenize_text(text):
     return tokenizer(text, padding=True, truncation=True, max_length=128, return_tensors='pt')
@@ -34,4 +35,3 @@ df['tokens_es'] = df['text_es'].apply(lambda x: tokenize_text(x)['input_ids'].to
 df['tokens_hi'] = df['text_hi'].apply(lambda x: tokenize_text(x)['input_ids'].tolist())
 df.to_csv('data/tokenized_multilingual.csv', index=False)
 print("Data tokenized and saved!")
-
