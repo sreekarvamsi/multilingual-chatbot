@@ -34,3 +34,4 @@ df['tokens_es'] = df['text_es'].apply(lambda x: tokenize_text(x)['input_ids'].to
 df['tokens_hi'] = df['text_hi'].apply(lambda x: tokenize_text(x)['input_ids'].tolist())
 df.to_csv('data/tokenized_multilingual.csv', index=False)
 print("Data tokenized and saved!")
+
