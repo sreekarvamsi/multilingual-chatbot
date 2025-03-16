@@ -5,4 +5,6 @@ numpy==1.26.0  # Numerical operations
 boto3==1.28.0  # AWS SDK for Python
 datasets==2.14.0  # Hugging Face Datasets for data loading
 flake8==6.1.0  # Linting for CI/CD
-pytest==7.4.0  # Testing for CI/CD
+pytest==7.4.0  # Testing for CI/CD 
+googletrans==3.1.0a0
+sentencepiece
